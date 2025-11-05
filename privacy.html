@@ -15,7 +15,7 @@
   <meta property="og:url" content="https://dyor-do-your-own-research.github.io/paletio-site/privacy" />
 
   <!-- Favicon (optional) -->
-  <link rel="icon" href="./assets/favicon.ico" />
+  <link rel="icon" href="./PaletioIcon-iOS-Default-1024x1024@1x.png" />
 
   <style>
     :root {
@@ -36,13 +36,17 @@
       color: var(--text);
       line-height: 1.6;
     }
-    .container { max-width: 900px; margin: 0 auto; padding: 24px; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 24px; }
     header { display: flex; justify-content: space-between; align-items: center; padding: 16px 0 8px; }
     .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--text); }
     .brand-badge {
-      width: 40px; height: 40px; border-radius: 12px;
-      background: radial-gradient(circle at 30% 30%, #fff 0%, #ffd1d5 35%, transparent 36%), conic-gradient(from 0deg, #ffb703, #fb5607, #ff006e, #8338ec, #3a86ff, #06d6a0, #ffb703);
-      border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.05);
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.05);
+      object-fit: cover;
+      display: block;
     }
     nav a { color: var(--muted); text-decoration: none; margin-left: 16px; }
     nav a:hover { color: var(--text); }
@@ -58,17 +62,12 @@
 </head>
 <body>
   <div class="container">
-    <header aria-label="Site header">
-      <a class="brand" href="index.html">
-        <div class="brand-badge" aria-hidden="true"></div>
-        <h1 style="font-size:20px;margin:0;">Paletio Privacy Policy</h1>
-      </a>
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="support.html">Support</a>
-        <a aria-current="page" href="privacy.html">Privacy</a>
-      </nav>
-    </header>
+    <div id="header-placeholder"></div>
+    <script>
+      fetch("header.html")
+        .then(r => r.text())
+        .then(html => { document.getElementById("header-placeholder").innerHTML = html; });
+    </script>
 
     <main class="card">
       <h1>Privacy Policy</h1>
@@ -117,9 +116,12 @@
       <p>© 2025 Jose Bagus Ramadhan. All rights reserved. Developed under DYOR — Do Your Own Research.</p>
     </main>
 
-    <footer>
-      <p><a href="index.html">Home</a> • <a href="support.html">Support</a> • <strong>Privacy</strong></p>
-    </footer>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch("footer.html")
+        .then(r => r.text())
+        .then(html => { document.getElementById("footer-placeholder").innerHTML = html; });
+    </script>
   </div>
 </body>
 </html>
