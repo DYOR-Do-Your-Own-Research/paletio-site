@@ -38,16 +38,11 @@
       line-height: 1.6;
     }
     .container {
-      max-width: 960px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 24px;
     }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0 8px;
-    }
+    /* header styles remain for loaded header.html */
     .brand {
       display: flex;
       align-items: center;
@@ -147,11 +142,7 @@
       background: #141823;
     }
     .btn:hover { border-color: #2e3342; }
-    footer {
-      margin: 32px 0 16px;
-      color: var(--muted);
-      font-size: 14px;
-    }
+    /* footer styles remain for loaded footer.html */
     .pill {
       display: inline-flex;
       align-items: center;
@@ -201,17 +192,14 @@
 </head>
 <body>
   <div class="container">
-    <header aria-label="Site header">
-      <a class="brand" href="index.html">
-        <div class="brand-badge" aria-hidden="true"></div>
-        <h1>Paletio Support</h1>
-      </a>
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a aria-current="page" href="support.html">Support</a>
-        <a href="privacy.html">Privacy</a>
-      </nav>
-    </header>
+    <div id="header-placeholder"></div>
+    <script>
+      fetch("header.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("header-placeholder").innerHTML = data;
+        });
+    </script>
 
     <div class="hero">
       <div class="pill" role="note" aria-label="App info">
@@ -309,9 +297,14 @@
       </section>
     </div>
 
-    <footer>
-      <p>Made with ❤️ for painters. <a href="index.html">Back to Home</a> • <a href="support.html">Support</a> • <a href="privacy.html">Privacy</a></p>
-    </footer>
+    <div id="footer-placeholder"></div>
+    <script>
+      fetch("footer.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
+    </script>
   </div>
 </body>
 </html>
